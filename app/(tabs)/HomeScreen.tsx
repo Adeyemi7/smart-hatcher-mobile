@@ -114,19 +114,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useEffect, useState } from "react";
 import { RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
 
-const API_URL = "https://smart-hatcher-backend.onrender.com/api/sensor";
+const API_URL = "http://51.21.3.129/api/sensor";
 
 export default function HomeScreen() {
   const [temperature, setTemperature] = useState<number>(0);
   const [humidity, setHumidity] = useState<number>(0);
-  const [lastUpdated, setLastUpdated] = useState<string>("");
+  const [lastUpdated, setLastUpdated] = useState<string>(""); 
   const [connected, setConnected] = useState<boolean>(false);
   const [alerts, setAlerts] = useState<string[]>([]);
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, 300000); // 5 minutes
+    const interval = setInterval(fetchData, 30000); // 0.5 minutes
     return () => clearInterval(interval);
   }, []);
 
@@ -191,7 +191,7 @@ export default function HomeScreen() {
             <View style={[styles.iconWrapper, { backgroundColor: '#4D96FF15' }]}>
               <MaterialCommunityIcons name="water-percent" size={30} color="#4D96FF" />
             </View>
-            <Text style={styles.valueText}>{humidity.toFixed(0)}%</Text>
+            <Text style={styles.valueText}>{humidity.toFixed(1)}%</Text>
             <Text style={styles.labelText}>Humidity</Text>
           </View>
         </View>

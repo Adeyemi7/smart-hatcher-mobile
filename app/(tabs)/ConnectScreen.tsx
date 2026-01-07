@@ -171,7 +171,7 @@ import { useAudioPlayer } from 'expo-audio';
 // ---------------------------------------------------------
 // CONFIGURATION
 // ---------------------------------------------------------
-const INCUBATOR_API = "https://smart-hatcher-backend.onrender.com/api/sensor";
+const INCUBATOR_API = "http://51.21.3.129/api/sensor";
 
 // Safe Ranges
 const TEMP_MIN = 37.5;
@@ -199,7 +199,7 @@ export default function App() {
     fetchData(); 
     const interval = setInterval(() => {
       fetchData(); 
-    }, 5000); 
+    }, 30000); 
 
     return () => clearInterval(interval);
   }, []);
